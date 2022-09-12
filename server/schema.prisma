@@ -1,0 +1,29 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Dono {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  nome      String
+  telefone  String 
+  email     String   @unique 
+  endereco  String 
+  pets      Pet[]
+}
+
+model Pet {
+  id        Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  idade     Int
+  nome      String
+  raca      String
+  tipo      Int
+  dono      Dono @relation(fields: [donoId], references: [id], onDelete: Cascade)
+  donoId    Int
+}

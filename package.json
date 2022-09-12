@@ -1,0 +1,11 @@
+{
+  "name": "teste_refero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "instalacao": "cd ./pet_shop && npm i && cd ../server && npm i && npx prisma migrate dev --name init"
+  },
+  "author": "",
+  "license": "ISC"
+}
