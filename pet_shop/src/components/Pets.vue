@@ -13,6 +13,7 @@
                     <td class="ordenavel" @click="ordenar('nome')">Nome</td>
                     <td class="ordenavel" @click="ordenar('tipo')">Tipo</td>
                     <td class="ordenavel" @click="ordenar('raca')">Raça</td>
+                    <td class="ordenavel" @click="ordenar('idade')">Idade</td>
                     <td class="ordenavel" @click="ordenar('dono')">Dono</td>
                     <td>Editar</td>
                     <td>Excluir</td>
@@ -22,6 +23,7 @@
                     <td>{{ pet.nome }}</td>
                     <td>{{ showTipo(pet.tipo) }}</td>
                     <td>{{ pet.raca }}</td>
+                    <td>{{ showIdade(pet.idade) }}</td>
                     <td>{{ pet.dono.nome }}</td>
                     <td>
                         <button class="button round-button edit center-flex delete" @click="openModalEditar(pet)">E</button>
@@ -88,6 +90,13 @@ export default {
                 return "Cachorro";
             } else { 
                 return "Desconhecido";
+            }
+        },
+        showIdade(idade) {
+            if(idade < 12) {
+                return idade + " meses";
+            } else {
+                return Math.floor(idade / 12) + " anos";
             }
         },
         closeModal() {
@@ -157,9 +166,9 @@ export default {
                     if(campo === "dono") {
                         n1 = a.dono.nome.toLocaleLowerCase("pt-br");
                         n2 = b.dono.nome.toLocaleLowerCase("pt-br");
-                    } else if(campo === "tipo") { 
-                        n1 = a.tipo;
-                        n2 = b.tipo;
+                    } else if(campo === "tipo" || campo === "idade") { 
+                        n1 = a[campo];
+                        n2 = b[campo];
                     } else {
                         n1 = a[campo].toLocaleLowerCase("pt-br");
                         n2 = b[campo].toLocaleLowerCase("pt-br");
