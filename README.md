@@ -9,7 +9,7 @@
 ```
 
 2. Crie um schema vazio no MySQL ou utilize um já existente.
-3. Crie um arquivo .env com base no exemplo disponível na pasta server para a conexão com o MySQL.
+3. Crie um arquivo .env na pasta server com base no exemplo disponível na pasta server para a conexão com o MySQL.
 ```
     DATABASE_URL="mysql://username:password@host:port/nomedobanco"
 ```
